@@ -74,7 +74,6 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
         console.error(err);
       }
     }
-    console.log(valueString)
 
     let labelContainer = null;
     if (valueString != null || label != null) {
