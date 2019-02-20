@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './GaugeCluster.css';
-import config from './config.json';
-import ReconnectingWebSocket from 'reconnecting-websocket';
+import {config} from './config';
+import DataStream from './datastream';
+import Page from './components/page';
 const Gauge = require('react-radial-gauge');
 
 interface State {
   data: {[key: string]: number};
   connected: boolean;
+  page: string;
 }
 
-class App extends Component<{}, State> {
+class GaugeCluster extends Component<{}, State> {
   state = {
-    data: {},
     connected: false,
+    page: 'default',
   } as State;
 
-  socket: ReconnectingWebSocket | null = null;
-
   componentDidMount() {
-    this.socket = new ReconnectingWebSocket(config.websocketURI);
-    this.socket.onopen = ev => this.setState({connected: true});
-    this.socket.onclose = ev => this.setState({connected: false});
-    this.socket.onmessage = message => this.setState(
-      {data: JSON.parse(message.data)}
+    DataStream.initialize(
+      () => this.setState({connected: true}),
+      () => this.setState({connected: false})
     );
   }
 
-  render() {
+  _nextPage = () => {
+    const pageList = Object.keys(config.pages);
+    let nextPageIdx = pageList.indexOf(this.state.page) + 1;
+    if (nextPageIdx >= pageList.length) {
+      nextPageIdx = 0;
+    }
+    this.setState({page: pageList[nextPageIdx]});
+  }
 
+  render() {
     if (!this.state.connected) {
       return (
         <div className="GaugeCluster">
@@ -38,11 +43,20 @@ class App extends Component<{}, State> {
     }
 
     return (
-      <div className="GaugeCluster">
-        <Gauge currentValue={this.state.data['tps'] || 0} />
+      <div
+        className="GaugeCluster"
+        style={{backgroundColor: config.backgroundColor || '#000000'}}
+        onClick={this._nextPage}
+      >
+        <div
+          className="ClusterFrame"
+          style={{top: config.clusterPosition.y, left: config.clusterPosition.x}}
+        >
+          <Page items={config.pages[this.state.page]} />
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default GaugeCluster;
