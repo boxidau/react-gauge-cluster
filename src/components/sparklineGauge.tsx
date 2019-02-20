@@ -13,7 +13,8 @@ interface State {
 }
 
 export default class SparklineGauge extends Component<SparklineItemConfig, State> {
-
+  labelWidth = 50;
+  labelPadding = 5;
   subscriptionId: string | null = null;
   state = {
     values: []
@@ -48,7 +49,7 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
     const sl = (
       <Sparklines
         data={this.state.values.map(v => v.value)}
-        svgWidth={this.props.width}
+        svgWidth={this.props.width - this.labelWidth - this.labelPadding}
         svgHeight={this.props.height}
         min={this.props.scale.min}
         max={this.props.scale.max}
@@ -80,11 +81,11 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
       labelContainer = (
         <div style={{
           height: this.props.height,
+          width: this.labelWidth,
           textAlign: 'left',
-          margin: '0 0 15px 5px',
+          margin: this.labelPadding,
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'flex-end'
         }}>
           {label}
           {valueString}
@@ -94,14 +95,16 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
 
     return (
       <div style={{
-        position: 'relative',
+        position: 'absolute',
         top: this.props.position.y,
-        left: this.props.position.x,
-        display: 'flex',
-        flexDirection: 'row'
-      }}>
-        {sl}
-        {labelContainer}
+        left: this.props.position.x}}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row'
+        }}>
+          {sl}
+          {labelContainer}
+        </div>
       </div>
     );
   }
