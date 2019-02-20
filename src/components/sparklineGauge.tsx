@@ -83,9 +83,10 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
           height: this.props.height,
           width: this.labelWidth,
           textAlign: 'left',
-          margin: this.labelPadding,
+          paddingLeft: this.labelPadding,
           display: 'flex',
           flexDirection: 'column',
+          justifyContent: 'center'
         }}>
           {label}
           {valueString}
