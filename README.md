@@ -4,10 +4,12 @@
 
 This project is intended to allow users to build highly customizable performant gauge clusters for use in embedded applications where webkit is available
 
-I test this project on a Raspberry Pi running the [wpe-buildroot](https://github.com/WebPlatformForEmbedded/buildroot) environment
-Data is supplied the the react gauge cluster from a websocket
-[logger/streamer](https://github.com/boxidau/megasquirt_node_logger) server process
-which in this case is compatible with megasquirt devices however any backend could be swapped out
+I test this project on a Raspberry Pi running the [wpe-buildroot](https://github.com/WebPlatformForEmbedded/buildroot) environment.
+Data is supplied the the react gauge cluster from a
+[backend](https://github.com/boxidau/megasquirt_node_logger) server process over a websocket connection.
+
+The backend process mentioned here is compatible with megasquirt; however any
+backend that offers a map of string keys and number values over a websocket can be used instead.
 
 
 ## Features
