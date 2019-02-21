@@ -15,7 +15,12 @@ which in this case is compatible with megasquirt devices however any backend cou
 
 ## Gauge Types
 - Sparkline ![Sparkline Example](https://raw.githubusercontent.com/boxidau/react-gauge-cluster/master/docs/images/sparkline_screenshot.png)
-- Radial (Example image to come)
+- Radial ![Radial Example](https://raw.githubusercontent.com/boxidau/react-gauge-cluster/master/docs/images/radial_screenshot.png)
+
+## TODO
+- "LED strip" AFR gauge
+- "LED strip" Shift Light
+- 7 segment display digits
 
 ## Websockets i.e. known issues
 A websocket connection being a TCP communication mechanism is bound to run into head of line blocking issues at some point.

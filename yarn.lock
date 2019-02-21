@@ -912,6 +912,11 @@
     "@svgr/plugin-svgo" "^4.0.3"
     loader-utils "^1.1.0"
 
+"@types/canvas-gauges@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@types/canvas-gauges/-/canvas-gauges-2.1.1.tgz#e3a0c2eca56778e38791a4c3b7403ec4a20726c4"
+  integrity sha512-5UCsn5DSqRW9HzwUoZkkeE5Fw4GA35Z5Wu/h33CLp5+8qcTyhzslbP6VtlVwNq05LrfPjcMYuHbZhk6zTJdAsw==
+
 "@types/node@*":
   version "11.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.9.4.tgz#ceb0048a546db453f6248f2d1d95e937a6f00a14"
@@ -2116,6 +2121,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000918, caniuse-lite@^1.0.30000929, can
   version "1.0.30000938"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000938.tgz#b64bf1427438df40183fce910fe24e34feda7a3f"
   integrity sha512-ekW8NQ3/FvokviDxhdKLZZAx7PptXNwxKgXtnR5y+PR3hckwuP3yJ1Ir+4/c97dsHNqtAyfKUGdw8P4EYzBNgw==
+
+canvas-gauges@^2.1.5:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/canvas-gauges/-/canvas-gauges-2.1.5.tgz#62e461280ccf7eaa254486291130289a790a7d3f"
+  integrity sha512-7GUd1uukePQPQPIoM8Sh4UrG8om+2RG+D8WN5BCkIp9wAfByzPuZZinsUkfFCyRrEOZ/rhuwBfFnb1ld8IfNrw==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -7917,11 +7927,6 @@ react-is@^16.8.1:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
   integrity sha512-D+NxhSR2HUCjYky1q1DwpNUD44cDpUXzSmmFyC3ug1bClcU/iDNy0YNn1iwme28fn+NFhpA13IndOd42CrFb+Q==
-
-react-radial-gauge@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-radial-gauge/-/react-radial-gauge-0.2.0.tgz#0e412945c31ddd04d183875f9ea1910eb79c7eca"
-  integrity sha512-pENdAQyJ+hKExzfMLxFl/9yTAQMC3t4gcGNeGR0ppAZDbwSq3H+fi1LcCihPgiLPLexVKWUItxnPQbUu0CPlHQ==
 
 react-scripts@2.1.5:
   version "2.1.5"
