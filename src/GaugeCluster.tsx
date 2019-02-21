@@ -3,7 +3,6 @@ import './GaugeCluster.css';
 import {config} from './config';
 import DataStream from './datastream';
 import Page from './components/page';
-const Gauge = require('react-radial-gauge');
 
 interface State {
   data: {[key: string]: number};
