@@ -1,5 +1,7 @@
 # React Gauge Cluster
 
+![Sample Dash](https://raw.githubusercontent.com/boxidau/react-gauge-cluster/master/docs/images/sample_dash.png)
+
 This project is intended to allow users to build highly customizable performant gauge clusters for use in embedded applications where webkit is available
 
 I test this project on a Raspberry Pi running the [wpe-buildroot](https://github.com/WebPlatformForEmbedded/buildroot) environment
