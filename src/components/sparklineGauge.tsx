@@ -13,7 +13,7 @@ interface State {
 }
 
 export default class SparklineGauge extends Component<SparklineItemConfig, State> {
-  labelWidth = 50;
+  labelWidth = 60;
   labelPadding = 5;
   subscriptionId: string | null = null;
   state = {
@@ -47,15 +47,20 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
   render() {
 
     const sl = (
-      <Sparklines
-        data={this.state.values.map(v => v.value)}
-        svgWidth={this.props.width - this.labelWidth - this.labelPadding}
-        svgHeight={this.props.height}
-        min={this.props.scale.min}
-        max={this.props.scale.max}
-      >
-        <SparklinesLine style={{ strokeWidth: 2 }} color={this.props.color || 'red'} />
-      </Sparklines>
+      <div style={{
+        borderLeft: this.props.axes ? '1px solid #797979' : 'none',
+        borderBottom: this.props.axes ? '1px solid #797979' : 'none'
+      }}>
+        <Sparklines
+          data={this.state.values.map(v => v.value)}
+          svgWidth={this.props.width - this.labelWidth - this.labelPadding}
+          svgHeight={this.props.height}
+          min={this.props.scale.min}
+          max={this.props.scale.max}
+        >
+          <SparklinesLine style={{ strokeWidth: 2 }} color={this.props.color || 'red'} />
+        </Sparklines>
+    </div>
     );
 
     let label = null;
@@ -69,7 +74,9 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
       try {
         const formatted = sprintf(this.props.valueFormatString, lastPoint.value);
         valueString = (
-          <div>{formatted}</div>
+          <div>
+            {formatted}
+          </div>
         );
       } catch(err) {
         console.error(err);
@@ -82,8 +89,9 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
         <div style={{
           height: this.props.height,
           width: this.labelWidth,
-          textAlign: 'left',
-          paddingLeft: this.labelPadding,
+          textAlign: this.props.labelPosition == 'left' ? 'right': 'left',
+          paddingLeft: this.props.labelPosition == 'left' ? 0 : this.labelPadding,
+          paddingRight: this.props.labelPosition == 'left' ? this.labelPadding : 0,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center'
@@ -95,13 +103,15 @@ export default class SparklineGauge extends Component<SparklineItemConfig, State
     }
 
     return (
-      <div style={{
+      <div className="SparklineGauge" style={{
         position: 'absolute',
         top: this.props.position.y,
         left: this.props.position.x}}>
         <div style={{
+          height: this.props.height,
           display: 'flex',
-          flexDirection: 'row'
+          flexDirection: 'row',
+          flexFlow: this.props.labelPosition == 'left' ? 'row-reverse' : 'row'
         }}>
           {sl}
           {labelContainer}

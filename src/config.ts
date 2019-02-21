@@ -15,6 +15,8 @@ export interface SparklineItemConfig extends ItemConfigBase {
   height: number;
   history: number; // number of milliseconds worth of history to display
   color?: string;
+  labelPosition?: 'left' | 'right'; // right is default
+  axes?: boolean; // default is off
 }
 
 export interface RadialItemConfig extends ItemConfigBase {
@@ -54,18 +56,7 @@ export const config: Configuration = {
   },
   pages: {
     default: [
-      {
-        type: 'sparkline',
-        channel: 'tps',
-        scale: {max: 100, min: 0},
-        position: {x: 0, y: 0},
-        width: 200,
-        height: 70,
-        history: 2000,
-        color: '#00AAFF',
-        label: "TPS",
-        valueFormatString: "%d %%"
-      },
+      // sparklines on the left
       {
         type: 'sparkline',
         channel: 'map',
@@ -76,37 +67,28 @@ export const config: Configuration = {
         history: 2000,
         color: '#00AAFF',
         label: "MAP",
-        valueFormatString: "%d kPa"
-      },
-      {
-        type: 'sparkline',
-        channel: 'mat',
-        scale: {max: 120, min: 0},
-        position: {x: 0, y: 180},
-        width: 200,
-        height: 70,
-        history: 2000,
-        color: '#00AAFF',
-        label: "MAT",
-        valueFormatString: "%d ℃"
+        valueFormatString: "%d kPa",
+        labelPosition: 'right'
       },
       {
         type: 'sparkline',
         channel: 'afr',
         scale: {max: 10, min: 20},
-        position: {x: 0, y: 270},
+        position: {x: 0, y: 180},
         width: 200,
         height: 70,
         history: 2000,
         color: '#00AAFF',
         label: "AFR",
-        valueFormatString: "%.1f"
+        valueFormatString: "%.1f",
+        labelPosition: 'right'
       },
+      // big radial in the middle
       {
         type: 'radial',
         channel: 'rpm',
         size: 300,
-        position: {x: 220, y: 100},
+        position: {x: 220, y: 30},
         label: '1000/min',
         scale: {max: 7000, min: 0},
         majorTicks: [0, 1, 2, 3, 4, 5, 6, 7],
@@ -114,7 +96,34 @@ export const config: Configuration = {
         warningValue: 5700,
         criticalValue: 6400,
         theme: 'dark',
-      }
+      },
+      // sparklines on the right
+      {
+        type: 'sparkline',
+        channel: 'clt',
+        scale: {max: 100, min: 0},
+        position: {x: 570, y: 90},
+        width: 200,
+        height: 70,
+        history: 2000,
+        color: '#00AAFF',
+        label: "CLT",
+        valueFormatString: "%d °C",
+        labelPosition: 'left'
+      },
+      {
+        type: 'sparkline',
+        channel: 'mat',
+        scale: {max: 120, min: 0},
+        position: {x: 570, y: 180},
+        width: 200,
+        height: 70,
+        history: 2000,
+        color: '#00AAFF',
+        label: "MAT",
+        valueFormatString: "%d °C",
+        labelPosition: 'left',
+      },
     ],
   }
 };
