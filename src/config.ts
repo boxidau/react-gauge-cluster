@@ -72,7 +72,7 @@ export const config: Configuration = {
       },
       {
         type: 'sparkline',
-        channel: 'afr',
+        channel: 'afr1',
         scale: {max: 10, min: 20},
         position: {x: 0, y: 180},
         width: 200,
@@ -100,7 +100,7 @@ export const config: Configuration = {
       // sparklines on the right
       {
         type: 'sparkline',
-        channel: 'clt',
+        channel: 'coolant',
         scale: {max: 100, min: 0},
         position: {x: 570, y: 90},
         width: 200,
@@ -113,14 +113,14 @@ export const config: Configuration = {
       },
       {
         type: 'sparkline',
-        channel: 'mat',
-        scale: {max: 120, min: 0},
+        channel: 'tps',
+        scale: {max: 100, min: 0},
         position: {x: 570, y: 180},
         width: 200,
         height: 70,
         history: 2000,
         color: '#00AAFF',
-        label: "MAT",
+        label: "TPS",
         valueFormatString: "%d °C",
         labelPosition: 'left',
       },
